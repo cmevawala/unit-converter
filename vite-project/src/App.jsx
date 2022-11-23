@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import UnitConverter from "./components/UnitConverter";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [category, setCategory] = useState("DigitalStorage");
+
+  const [units, setUnits] = useState("*");
+  console.log(units);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <select
+        className="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option value="DigitalStorage">Digital Storage</option>
+        <option value="Area">Area</option>
+      </select>
+
+      <br />
+
+      <select value={units} onChange={(e) => setUnits(e.target.value)}>
+        <option value="*">GB - MB</option>
+        <option value="*">MB - KB</option>
+        <option value="/">MB - GB</option>
+        <option value="/">KB - MB</option>
+      </select>
+
+      <br />
+
+      <UnitConverter category={category} unit={units} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
