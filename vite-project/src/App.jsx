@@ -10,27 +10,29 @@ function App() {
 
   return (
     <div className="App">
-      <select
-        className="category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option value="DigitalStorage">Digital Storage</option>
-        <option value="Area">Area</option>
-      </select>
+      <section>
+        <select
+          className="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="DigitalStorage">Digital Storage</option>
+          <option value="Area">Area</option>
+        </select>
 
-      <br />
+        <br />
 
-      <select value={units} onChange={(e) => setUnits(e.target.value)}>
-        <option value="*">GB - MB</option>
-        <option value="*">MB - KB</option>
-        <option value="/">MB - GB</option>
-        <option value="/">KB - MB</option>
-      </select>
+        <select value={units} onChange={(e) => setUnits(e.target.value)}>
+          <option value="*">GB - MB</option>
+          <option value="*">MB - KB</option>
+          <option value="/">MB - GB</option>
+          <option value="/">KB - MB</option>
+        </select>
 
-      <br />
+        <br />
 
-      <UnitConverter category={category} unit={units} />
+        <UnitConverter category={category} unit={units} />
+      </section>
     </div>
   );
 }

@@ -40,7 +40,25 @@
   color: #888;
 } */
 
-.category {
-  margin-bottom: 1em;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #F5F5F5;
+  width: 50%;
+  padding: 2.5em;
+  border-radius: 0.5em;
+}
+
+/* .category {
+  margin-bottom: 1em;
+} */
 

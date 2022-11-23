@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { converter } from "../../utils/unit-converter";
 
+import "./styles.css";
+
 const UnitConverter = ({ category, unit }) => {
   const inputRef1 = useRef();
   const inputRef2 = useRef();
@@ -24,13 +26,13 @@ const UnitConverter = ({ category, unit }) => {
 
   return (
     <>
-      <label>From: </label>
-      <input type="text" name="from" ref={inputRef1} />
+      <div className="input-container">
+        <input type="text" name="from" ref={inputRef1} />
+        <label>=</label>
+        <input type="text" name="to" ref={inputRef2} />
+      </div>
 
-      <label>To: </label>
-      <input type="text" name="to" ref={inputRef2} />
-
-      <button onClick={() => handleConvert()}> Convert </button>
+      {/* <button onClick={() => handleConvert()}> Convert </button> */}
     </>
   );
 };

@@ -1,0 +1,35 @@
+input {
+    background-color: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 2px 2px 0 0;
+    color: #000;
+    font-size: 180%;
+    height: 40px;
+    text-align: center;
+    width: 197px;
+}
+
+select {
+    background: url(//ssl.gstatic.com/ui/v1/disclosure/grey-disclosure-arrow-up-down.png) 100% no-repeat #f8f9fa;
+    border: 1px solid #dadce0;
+    font-size: 13px;
+    line-height: 20px;
+    padding: 5px 16px 5px 5px;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    appearance: none;
+    color: #000;
+    background-position-x: 98%;
+    width: 449px;
+    margin-bottom: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    width: 449px;
+}
+
+label {
+    margin-top: 0.5em;
+}
