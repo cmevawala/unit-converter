@@ -1,9 +1,13 @@
-export function converter(unit, from) {
-  if (unit === "*") {
-    return Number.parseInt(from) * 1024;
+import { config } from "../data/config";
+
+export function converter(category, index, from) {
+  const unitCofig = config[category].units[index];
+
+  if (unitCofig.operator === "*") {
+    return Number.parseInt(from) * unitCofig.conversionRate;
   }
 
-  if (unit === "/") {
-    return Number.parseInt(from) / 1024;
+  if (unitCofig.operator === "/") {
+    return Number.parseInt(from) / unitCofig.conversionRate;
   }
 }

@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UnitConverter from "./components/UnitConverter";
 import "./App.css";
 
-function App() {
-  const [category, setCategory] = useState("DigitalStorage");
+import { config } from "./data/config";
 
-  const [units, setUnits] = useState("*");
-  console.log(units);
+function App() {
+  const [category, setCategory] = useState("storage");
+
+  const [unit, setUnit] = useState(0);
+
+  useEffect(() => {
+    setUnit(0);
+  }, [category]);
 
   return (
     <div className="App">
@@ -16,22 +21,31 @@ function App() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="DigitalStorage">Digital Storage</option>
-          <option value="Area">Area</option>
+          {config &&
+            Object.keys(config).map((key) => {
+              return <option value={key}>{config[key].label}</option>;
+            })}
         </select>
 
         <br />
 
-        <select value={units} onChange={(e) => setUnits(e.target.value)}>
-          <option value="*">GB - MB</option>
-          <option value="*">MB - KB</option>
-          <option value="/">MB - GB</option>
-          <option value="/">KB - MB</option>
+        <select value={unit} onChange={(e) => setUnit(e.target.value)}>
+          {config &&
+            config[category] &&
+            config[category].units &&
+            config[category].units.length > 0 &&
+            config[category].units.map((unitConfig, index) => {
+              return (
+                <option key={index} value={index}>
+                  {unitConfig.label}
+                </option>
+              );
+            })}
         </select>
 
         <br />
 
-        <UnitConverter category={category} unit={units} />
+        <UnitConverter category={category} unit={unit} />
       </section>
     </div>
   );

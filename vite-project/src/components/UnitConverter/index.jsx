@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { converter } from "../../utils/unit-converter";
 
 import "./styles.css";
@@ -12,15 +12,14 @@ const UnitConverter = ({ category, unit }) => {
 
   // 1KB = 1 / 1024 MB
 
-  //
+  useEffect(() => {
+    inputRef1.current.value = "";
+    inputRef2.current.value = "";
+  });
 
   const handleConvert = () => {
     const from = inputRef1.current.value;
-
-    console.log(unit);
-
-    const result = converter(unit, from);
-
+    const result = converter(category, unit, from);
     inputRef2.current.value = result;
   };
 
@@ -32,7 +31,9 @@ const UnitConverter = ({ category, unit }) => {
         <input type="text" name="to" ref={inputRef2} />
       </div>
 
-      {/* <button onClick={() => handleConvert()}> Convert </button> */}
+      <button className="convert-button" onClick={() => handleConvert()}>
+        Convert
+      </button>
     </>
   );
 };
